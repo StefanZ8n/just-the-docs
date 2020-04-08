@@ -19,6 +19,8 @@
   z-index: 100;
   display: flex;
   flex-wrap: wrap;
+  padding-top: $gutter-spacing-sm;
+  padding-bottom: $gutter-spacing-sm;
   background-color: $sidebar-color;
 
   @include mq(md) {
