@@ -18,13 +18,15 @@
 .side-bar {
   z-index: 100;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
+  padding-top: $gutter-spacing-sm;
+  padding-bottom: $gutter-spacing-sm;
   background-color: $sidebar-color;
 
   @include mq(md) {
     flex-wrap: nowrap;
     position: absolute;
-    width: $nav-width-md;
+    width: $nav-width + 16;
     height: 100%;
 	padding-top: $gutter-spacing * 2;
     padding-bottom: 0;
