@@ -6,23 +6,23 @@
     <title>{{ page.title }} - {{ site.title }}</title>
 
     {% if page.description %}
-      <meta name="Description" content="{{ page.description }}">
+    <meta name="Description" content="{{ page.description }}">
     {% endif %}
   {% endif %}
 
-  <link rel="shortcut icon" href="{{ 'favicon.ico' | absolute_url }}" type="image/x-icon">
+  <link rel="shortcut icon" href="https://www.veeam.com/favicon.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs.css' | absolute_url }}">
 
   {% if site.ga_tracking != nil %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', "{{ site.ga_tracking }}");
-    </script>
+    gtag('config', "{{ site.ga_tracking }}");
+  </script>
 
   {% endif %}
 
@@ -33,8 +33,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% seo %}
+{% seo %}
 
-  {% include head_custom.html %}
+{% include head_custom.html %}
 
 </head>

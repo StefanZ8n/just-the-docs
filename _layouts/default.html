@@ -17,8 +17,16 @@ layout: table_wrappers
   <div class="page-wrap">
     <div class="side-bar">
       <div class="site-header">
-        <a href="{{ site.url }}{{ site.baseurl }}" class="site-title lh-tight">{% include title.html %}</a>
+        <!-- ORG
+          <a href="{{ site.url }}{{ site.baseurl }}" class="site-title lh-tight">{% include title.html %}</a>
         <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button>
+        -->
+        <a href="{{ site.url }}{{ site.baseurl }}">
+          <img class="veeam_logo_lp" src="https://psr.veeam.com/global/img/logo/veeam_logo_lp_white.svg" alt="Veeam"/>
+        </a>      
+        <button class="c-hamburger js-hamburger js-main-nav-trigger">
+          <span>menu</span>
+        </button>
       </div>
 
       <div class="navigation main-nav js-main-nav">
@@ -28,8 +36,8 @@ layout: table_wrappers
         <p class="text-small text-grey-dk-000 mb-4">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
       </footer>
     </div>
-    <div class="main-content-wrap js-main-content" tabindex="0">
-      <div class="main-content">
+    <div class="main-content-wrap js-main-content" tabindex="0">      
+        <div class="main-content">          
         <div class="page-header js-page-header">
           {% if site.search_enabled != false %}
           <div class="search">
@@ -44,46 +52,46 @@ layout: table_wrappers
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
                 <li class="d-inline-block my-0{% unless forloop.last %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
-              {% endfor %}
-            </ul>
+            {% endfor %}
+          </ul>
           {% endif %}
-        </div>
-        <div class="page">
-          {% unless page.url == "/" %}
-            {% if page.parent %}
-              <nav class="breadcrumb-nav">
-                <ol class="breadcrumb-nav-list">
-                  {% if page.grand_parent %}
-                    <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
-                    <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
-                  {% else %}
-                    <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
-                  {% endif %}
-                  <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-                </ol>
-              </nav>
+        </div>      
+      <div class="page">
+        {% unless page.url == "/" %}
+        {% if page.parent %}
+        <nav class="breadcrumb-nav">
+          <ol class="breadcrumb-nav-list">
+            {% if page.grand_parent %}
+            <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
+            <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
+            {% else %}
+            <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
             {% endif %}
-          {% endunless %}
-          <div id="main-content" class="page-content" role="main">
-            {% if site.heading_anchors != false %}
+            <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+          </ol>
+        </nav>
+        {% endif %}
+        {% endunless %}
+        <div id="main-content" class="page-content" role="main">
+          {% if site.heading_anchors != false %}
               {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#link\"></use></svg>" anchorClass="anchor-heading" %}
             {% else %}
               {{ content }}
-            {% endif %}
+            {% endif %}          
 
           {% if page.has_children == true and page.has_toc != false %}
-            <hr>
-            <h2 class="text-delta">Table of contents</h2>
-            {% assign children_list = site.pages | sort:"nav_order" %}
-            <ul>
-              {% for child in children_list %}
-                {% if child.parent == page.title and child.title != page.title %}
-                <li>
-                  <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
-                </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+          <hr>
+          <h2 class="text-delta">Table of contents</h2>
+          {% assign children_list = site.pages | sort:"nav_order" %}
+          <ul>
+            {% for child in children_list %}
+            {% if child.parent == page.title and child.title != page.title %}
+            <li>
+              <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
           {% endif %}
 
           {% if site.footer_content != nil %}
