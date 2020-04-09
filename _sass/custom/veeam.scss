@@ -14,7 +14,7 @@ a:not([class]) {
 }
 
 .side-bar a {
-  color: $link-color;
+  color: $nav-child-link-color;
 
   &:hover {
     text-decoration: underline;
@@ -29,7 +29,7 @@ a:not([class]) {
   }
 }
 
-// from buttton.scss
+// from button.scss
 .btn {
   box-sizing: border-box;
   display: inline-block;
