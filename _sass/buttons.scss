@@ -4,115 +4,137 @@
 // stylelint-disable color-named
 
 .btn {
-  display: inline-block;
   box-sizing: border-box;
-  padding-top: 0.3em;
-  padding-right: 1em;
-  padding-bottom: 0.3em;
-  padding-left: 1em;
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 500;
+  display: inline-block;
+  padding: 12px 30px 10px;
   line-height: 1.5;
-  color: $link-color;
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
   text-decoration: none;
-  vertical-align: baseline;
-  cursor: pointer;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 16px;
+  border: 0 none;
+  outline: 0;
   background-color: $base-button-color;
-  border-width: 0;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 99999px;
+  transition: background .15s ease-in-out;
+
+  &:hover {
+    background: #00c73c;
+    text-decoration: none
+  }
+
+  &:active {
+    background: #009E30
+  }
+}
+
+/*********************** hamburger - s ***************************/
+.c-hamburger {
+  background-color: transparent;
+  /*float: right;*/
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin: 0;
+  margin-top: -5px;
+  padding: 0;
+  width: 35px;
+  height: 30px;
+
+  width: 24px;
+
+
+  font-size: 0;
+  text-indent: -9999px;
   appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
 
-  &:focus {
-    text-decoration: none;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(blue, 0.25);
-  }
+  display: none;
+}
 
-  &:focus:hover,
-  &.selected:focus {
-    box-shadow: 0 0 0 3px rgba(blue, 0.25);
-  }
+.c-hamburger:focus {
+  outline: none;
+}
 
-  &:hover,
-  &.zeroclipboard-is-hover {
-    color: darken($link-color, 2%);
-  }
+.c-hamburger span,
+.c-hamburger span::before,
+.c-hamburger span::after {
+  background: #93EA20;
+  ;
+}
 
-  &:hover,
-  &:active,
-  &.zeroclipboard-is-hover,
-  &.zeroclipboard-is-active {
-    text-decoration: none;
-    background-color: darken($base-button-color, 1%);
-  }
+.c-hamburger span {
+  display: block;
+  position: absolute;
+  top: 13px;
+  left: 0px;
+  right: 0;
+  height: 4px;
+}
 
-  &:active,
-  &.selected,
-  &.zeroclipboard-is-active {
-    background-color: darken($base-button-color, 3%);
-    background-image: none;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-  }
+.c-hamburger span::before {
+  transition-property: top, transform;
+  top: -8px;
+}
 
-  &.selected:hover {
-    background-color: darken(#dcdcdc, 5%);
-  }
+.c-hamburger span::before,
+.c-hamburger span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  content: "";
+}
 
-  &:disabled,
-  &.disabled {
-    &,
-    &:hover {
-      color: rgba(102, 102, 102, 0.5);
-      cursor: default;
-      background-color: rgba(229, 229, 229, 0.5);
-      background-image: none;
-      box-shadow: none;
-    }
+.c-hamburger span::after {
+  transition-property: bottom, transform;
+  bottom: -8px;
+}
+
+.c-hamburger.c-hamburger-x span::after,
+.c-hamburger.c-hamburger-x span::before {
+  transition-delay: 0s, 0.3s;
+}
+
+.c-hamburger.c-hamburger-x span {
+  background: none;
+}
+
+.c-hamburger.c-hamburger-x span::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.c-hamburger.c-hamburger-x span::after {
+  transform: rotate(45deg);
+  bottom: 0;
+}
+
+@media screen and (max-width: 739px) {
+  .c-hamburger {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 10px;
   }
 }
 
-.btn-outline {
-  color: $link-color;
-  background: transparent;
-  box-shadow: inset 0 0 0 2px $grey-lt-300;
-
-  &:hover,
-  &:active,
-  &.zeroclipboard-is-hover,
-  &.zeroclipboard-is-active {
-    color: darken($link-color, 4%);
-    text-decoration: none;
-    background-color: transparent;
-    box-shadow: inset 0 0 0 3px $grey-lt-300;
-  }
-
-  &:focus {
-    text-decoration: none;
-    outline: none;
-    box-shadow: inset 0 0 0 2px $grey-dk-100, 0 0 0 3px rgba(blue, 0.25);
-  }
-
-  &:focus:hover,
-  &.selected:focus {
-    box-shadow: inset 0 0 0 2px $grey-dk-100;
+@media screen and (max-width: 480px) {
+  .c-hamburger {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 10px;
   }
 }
 
-.btn-primary {
-  @include btn-color($white, $btn-primary-color);
-}
-
-.btn-purple {
-  @include btn-color($white, $purple-100);
-}
-
-.btn-blue {
-  @include btn-color($white, $blue-000);
-}
-
-.btn-green {
-  @include btn-color($white, $green-100);
-}
+/*********************** hamburger - e ***************************/

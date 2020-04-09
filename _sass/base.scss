@@ -70,17 +70,32 @@ a {
 
 a:not([class]) {
   text-decoration: none;
-  background-image: linear-gradient($border-color 0%, $border-color 100%);
+  background-image: none;
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 1px 1px;
 
   &:hover {
-    background-image: linear-gradient(rgba($link-color, 0.45) 0%, rgba($link-color, 0.45) 100%);
-    background-size: 1px 1px;
-
+    text-decoration: underline;
   }
 }
+
+.side-bar a {
+  color: $link-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.navigation-list-link.active {
+  color: #ffffff !important;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 
 code {
   font-family: $mono-font-family;
@@ -107,4 +122,31 @@ hr {
   margin: $sp-6 0;
   background-color: $border-color;
   border: 0;
+}
+
+img.veeam_logo_lp,
+img.veeam_logo_slogan_lp {
+  position: absolute;
+    top: 15px;
+    right: 50px;
+    z-index: 101;
+    width: 188.23px;
+    height: 33px
+}
+
+@media screen and (max-width: 739px) {
+  img.veeam_logo_lp,
+  img.veeam_logo_slogan_lp {
+    position: static;
+    margin: 0 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  img.veeam_logo_lp,
+  img.veeam_logo_slogan_lp {
+    position: static;
+      width: 142.59px;
+      height: 25px
+  }
 }

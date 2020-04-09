@@ -6,8 +6,21 @@
 
   <div class="page-wrap">
     <div class="side-bar">
+      <!-- 
       <a href="{{ site.url }}{{ site.baseurl }}" class="site-title fs-6 lh-tight">{{ site.title }}</a>
+     -->
+      <a href="{{ site.url }}{{ site.baseurl }}">
+        <img class="veeam_logo_lp" src="https://psr.veeam.com/global/img/logo/veeam_logo_lp_white.svg" alt="Veeam"/>
+      </a>
+      <!-- 
       <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      -->
+      <button class="c-hamburger js-hamburger js-main-nav-trigger">
+        <span>menu</span>
+      </button>
+    
+
+
       <div class="navigation main-nav js-main-nav">
         {% include nav.html %}
       </div>
@@ -28,29 +41,29 @@
           </div>
           {% endif %}
           {% if site.aux_links != nil %}
-            <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
-              {% for link in site.aux_links %}
-                <li class="d-inline-block my-0{% unless forloop.last %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
-              {% endfor %}
-            </ul>
+          <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
+            {% for link in site.aux_links %}
+            <li class="d-inline-block my-0{% unless forloop.last %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+            {% endfor %}
+          </ul>
           {% endif %}
         </div>
       </div>
       <div class="main-content">
         {% unless page.url == "/" %}
-          {% if page.parent %}
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                {% if page.grand_parent %}
-                  <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
-                  <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
-                {% else %}
-                  <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
-                {% endif %}
-                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-              </ol>
-            </nav>
-          {% endif %}
+        {% if page.parent %}
+        <nav class="breadcrumb-nav">
+          <ol class="breadcrumb-nav-list">
+            {% if page.grand_parent %}
+            <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
+            <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
+            {% else %}
+            <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
+            {% endif %}
+            <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+          </ol>
+        </nav>
+        {% endif %}
         {% endunless %}
         <div id="main-content" class="page-content" role="main">
           {{ content }}
@@ -61,11 +74,11 @@
           {% assign children_list = site.pages | sort:"nav_order" %}
           <ul>
             {% for child in children_list %}
-              {% if child.parent == page.title and child.title != page.title %}
-              <li>
-                <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
-              </li>
-              {% endif %}
+            {% if child.parent == page.title and child.title != page.title %}
+            <li>
+              <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
+            </li>
+            {% endif %}
             {% endfor %}
           </ul>
           {% endif %}

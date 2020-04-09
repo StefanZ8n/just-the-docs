@@ -16,16 +16,17 @@ function toggleNav(){
   const search = document.querySelector('.js-search');
 
   addEvent(navTrigger, 'click', function(){
-    var text = navTrigger.innerText;
-    var textToggle = navTrigger.getAttribute('data-text-toggle');
+    // var text = navTrigger.innerText;
+    // var textToggle = navTrigger.getAttribute('data-text-toggle');
 
     nav.classList.toggle('nav-open');
     auxNav.classList.toggle('nav-open');
     navTrigger.classList.toggle('nav-open');
     search.classList.toggle('nav-open');
-    navTrigger.innerText = textToggle;
-    navTrigger.setAttribute('data-text-toggle', text);
-    textToggle = text;
+    // navTrigger.innerText = textToggle;
+    // navTrigger.setAttribute('data-text-toggle', text);
+    // textToggle = text;
+    navTrigger.classList.toggle('c-hamburger-x');
   })
 }
 
