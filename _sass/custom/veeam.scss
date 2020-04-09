@@ -14,11 +14,11 @@ a:not([class]) {
 }
 
 .side-bar a {
-  color: $nav-child-link-color;
-  background: none;
+  color: $nav-child-link-color;  
 
   &:hover {
     text-decoration: underline;
+    background: none;
   }
 }
 
